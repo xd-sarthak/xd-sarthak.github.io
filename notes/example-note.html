@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example Note</title>
+    <meta name="description" content="An example note showing the structure" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            background:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E"),
+                linear-gradient(to bottom, #f4e4c1 0%, #e8d4a8 50%, #dcc69a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(139, 119, 87, 0.15) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="w-full max-w-[90%] md:w-[50%] mx-auto pb-10">
+    <nav class="mt-6">
+        <div>
+            <h1 class="font-serif text-4xl">My Blog</h1>
+            <div class="mt-5 flex flex-wrap gap-5">
+                <a href="../index.html"
+                    class="relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:bottom-[-4px] after:left-0 hover:after:w-full after:transition-all after:duration-300">Home</a>
+                <a href="../blogs/blog.html"
+                    class="relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:bottom-[-4px] after:left-0 hover:after:w-full after:transition-all after:duration-300">Blogs</a>
+                <a href="./notes.html"
+                    class="relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:bottom-[-4px] after:left-0 hover:after:w-full after:transition-all after:duration-300">Notes</a>
+            </div>
+        </div>
+    </nav>
+
+    <hr class="mt-3" />
+
+    <div class="mt-2">
+        <h1 class="text-4xl mt-[57px] mb-3 font-serif">
+            Example Note
+        </h1>
+        <span class="text-sm text-gray-500">14th January, 2026</span>
+
+        <p class="mt-4 font-serif text-lg">
+            This is an example note. Notes are typically shorter than blog posts
+            and might contain quick thoughts, references, or things you're learning about.
+        </p>
+
+        <h2 class="text-2xl mt-8 mb-3 font-serif">Key Points</h2>
+        <ul class="list-disc ml-8 font-serif text-lg mt-2">
+            <li>Notes can be brief summaries</li>
+            <li>Reference links to external resources</li>
+            <li>Quick thoughts or ideas</li>
+            <li>Reading list items</li>
+        </ul>
+
+        <h2 class="text-2xl mt-8 mb-3 font-serif">References</h2>
+        <p class="font-serif text-lg mt-2">
+            You can link to external resources:
+            <a href="https://example.com" class="underline underline-offset-4">Example Resource</a>
+        </p>
+
+        <hr class="my-10" />
+        <footer class="my-8">By Your Name</footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example Note</title>
+    <meta name="description" content="An example note showing the structure" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            background:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E"),
+                linear-gradient(to bottom, #f4e4c1 0%, #e8d4a8 50%, #dcc69a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(139, 119, 87, 0.15) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="w-full max-w-[90%] md:w-[50%] mx-auto pb-10">
+    <nav class="mt-6">
+        <div>
+            <h1 class="font-serif text-4xl">My Blog</h1>
+            <div class="mt-5 flex flex-wrap gap-5">
+                <a href="../index.html"
+                    class="relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:bottom-[-4px] after:left-0 hover:after:w-full after:transition-all after:duration-300">Home</a>
+                <a href="../blogs/blog.html"
+                    class="relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:bottom-[-4px] after:left-0 hover:after:w-full after:transition-all after:duration-300">Blogs</a>
+                <a href="./notes.html"
+                    class="relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:bottom-[-4px] after:left-0 hover:after:w-full after:transition-all after:duration-300">Notes</a>
+            </div>
+        </div>
+    </nav>
+
+    <hr class="mt-3" />
+
+    <div class="mt-2 text-lg">
+        <h1 class="text-4xl mt-[57px] mb-3 font-serif">
+            HTTP Notes
+        </h1>
+        <span class="text-sm text-gray-500">15th January, 2026</span>
+
+        <p class="mt-4 font-serif">
+            A comprehensive overview of the HyperText Transfer Protocol (HTTP), covering its evolution, core concepts,
+            and features.
+        </p>
+
+        <!-- 1. Introduction -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">1. Introduction</h2>
+        <p class="font-serif">
+            HTTP (HyperText Transfer Protocol) is an application-layer protocol for transmitting hypermedia documents,
+            such as HTML. It was designed for communication between web browsers and web servers but is also used for
+            other purposes. It follows a classical client-server model.
+        </p>
+
+        <!-- 2. HTTP Evolution -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">2. HTTP Evolution (Key Differences)</h2>
+        <ul class="list-disc ml-8 font-serif mt-2 space-y-2">
+            <li><strong>HTTP/0.9:</strong> The original version. One-line protocol. Supported only GET method. No
+                headers. Raw HTML response.</li>
+            <li><strong>HTTP/1.0:</strong> Introduced metadata (headers), status codes, and methods (POST, HEAD). Not
+                persistent by default (one connection per request).</li>
+            <li><strong>HTTP/1.1:</strong> Standardized persistent connections (keep-alive), pipelining, chunked
+                transfer encoding, and caching mechanisms.</li>
+            <li><strong>HTTP/2:</strong> Binary protocol (not text). Multiplexing (parallel requests over one
+                connection), header compression (HPACK), and server push.</li>
+            <li><strong>HTTP/3:</strong> Built on QUIC (UDP) instead of TCP. Solves "head-of-line blocking" in TCP.
+                Better performance on unreliable networks.</li>
+        </ul>
+
+        <!-- 3. HTTP Messages -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">3. HTTP Messages</h2>
+        <p class="font-serif mb-2">HTTP communication consists of requests and responses.</p>
+
+        <h3 class="text-xl mt-4 mb-2 font-serif font-semibold">Request Message</h3>
+        <pre class="bg-gray-100 p-4 rounded-md text-sm overflow-x-auto border border-gray-300">
+GET /index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0
+Accept: text/html
+Connection: keep-alive
+</pre>
+
+        <h3 class="text-xl mt-4 mb-2 font-serif font-semibold">Response Message</h3>
+        <pre class="bg-gray-100 p-4 rounded-md text-sm overflow-x-auto border border-gray-300">
+HTTP/1.1 200 OK
+Date: Mon, 27 Jul 2009 12:28:53 GMT
+Server: Apache
+Content-Type: text/html
+Content-Length: 123
+
+&lt;html&gt;...&lt;/html&gt;
+</pre>
+
+        <!-- 4. HTTP Headers -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">4. HTTP Headers</h2>
+        <p class="font-serif">
+            Headers let the client and the server pass additional information with an HTTP request or response.
+        </p>
+        <ul class="list-disc ml-8 font-serif mt-2 space-y-1">
+            <li>**General Headers:** Apply to both request and response (e.g., `Date`).</li>
+            <li>**Request Headers:** Contain more information about the resource to be fetched, or about the client
+                (e.g., `User-Agent`, `Accept`).</li>
+            <li>**Response Headers:** Hold additional information about the response, like its location or about the
+                server (e.g., `Server`, `Location`).</li>
+            <li>**Entity Headers:** Contain information about the body of the resource (e.g., `Content-Length`,
+                `Content-Type`).</li>
+        </ul>
+        <p class="font-serif mt-2">
+            <strong>Extensibility:</strong> Custom headers can be added. Traditionally prefixed with `X-` (e.g.,
+            `X-Custom-Header`), though this is deprecated for standardizing new headers. They allow "remote control"
+            configuration of client/server behavior.
+        </p>
+
+        <!-- 5. HTTP Methods -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">5. HTTP Methods</h2>
+        <p class="font-serif">Defines the desired action to be performed on the identified resource.</p>
+        <ul class="list-disc ml-8 font-serif mt-2 space-y-1">
+            <li><strong>GET:</strong> Retrieve data.</li>
+            <li><strong>POST:</strong> Submit an entity to the specified resource (often causes a change in state).</li>
+            <li><strong>PUT:</strong> Replace all current representations of the target resource with the upload
+                content.</li>
+            <li><strong>PATCH:</strong> Apply partial modifications to a resource.</li>
+            <li><strong>DELETE:</strong> Deletes the specified resource.</li>
+        </ul>
+
+        <!-- 6. Idempotency -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">6. Idempotency</h2>
+        <p class="font-serif">
+            An HTTP method is <strong>idempotent</strong> if an identical request can be made once or several times in a
+            row with the same effect while leaving the server in the same state.
+        </p>
+        <ul class="list-disc ml-8 font-serif mt-2">
+            <li><strong>Idempotent:</strong> GET, HEAD, PUT, DELETE, OPTIONS, TRACE. (e.g., Deleting an object 10 times
+                results in it being gone, same as deleting it once).</li>
+            <li><strong>Non-Idempotent:</strong> POST, PATCH (usually). (e.g., Placing an order 10 times might create 10
+                orders).</li>
+        </ul>
+
+        <!-- 7. Options & CORS -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">7. Options & CORS</h2>
+        <p class="font-serif">
+            <strong>OPTIONS Method:</strong> Describes the communication options for the target resource.
+        </p>
+        <p class="font-serif mt-2">
+            <strong>CORS (Cross-Origin Resource Sharing):</strong> A mechanism that uses additional HTTP headers to tell
+            browsers to give a web application running at one origin, access to selected resources from a different
+            origin.
+        </p>
+        <h3 class="text-xl mt-4 mb-2 font-serif font-semibold">CORS Request</h3>
+        <pre class="bg-gray-100 p-4 rounded-md text-sm overflow-x-auto border border-gray-300">
+GET /api/data HTTP/1.1
+Origin: https://my-site.com
+</pre>
+        <h3 class="text-xl mt-4 mb-2 font-serif font-semibold">CORS Response</h3>
+        <pre class="bg-gray-100 p-4 rounded-md text-sm overflow-x-auto border border-gray-300">
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: https://my-site.com
+</pre>
+
+        <!-- 8. Preflight Request -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">8. Preflight Request</h2>
+        <p class="font-serif">
+            A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood and
+            currently supported by the server. It uses the `OPTIONS` method.
+        </p>
+        <p class="font-serif mt-2"><strong>Criteria (when it occurs):</strong></p>
+        <ul class="list-disc ml-8 font-serif mt-1">
+            <li>Custom headers are present (e.g., `X-Token`).</li>
+            <li>Method is NOT GET, HEAD, or POST.</li>
+            <li>Content-Type is NOT application/x-www-form-urlencoded, multipart/form-data, or text/plain.</li>
+        </ul>
+
+        <!-- 9. HTTP Response Codes -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">9. HTTP Response Codes</h2>
+        <ul class="list-disc ml-8 font-serif mt-2 space-y-1">
+            <li><strong>1xx (Informational):</strong> 100 Continue.</li>
+            <li><strong>2xx (Successful):</strong> 200 OK, 201 Created, 204 No Content.</li>
+            <li><strong>3xx (Redirection):</strong> 301 Moved Permanently, 302 Found, 304 Not Modified.</li>
+            <li><strong>4xx (Client Error):</strong> 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found.
+            </li>
+            <li><strong>5xx (Server Error):</strong> 500 Internal Server Error, 502 Bad Gateway, 503 Service
+                Unavailable.</li>
+        </ul>
+
+        <!-- 10. HTTP Caching -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">10. HTTP Caching</h2>
+        <p class="font-serif">
+            Storing a copy of a given resource and serving it back when requested. Reduces latency and server load.
+        </p>
+        <ul class="list-disc ml-8 font-serif mt-2">
+            <li><code>Cache-Control: max-age=3600</code> (valid for 1 hour).</li>
+            <li><code>ETag: "v1.0"</code> (Validator).</li>
+            <li>If client has `ETag`, sends <code>If-None-Match: "v1.0"</code>. Server returns
+                <code>304 Not Modified</code> if match.</li>
+        </ul>
+
+        <!-- 11. Content Negotiation -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">11. Content Negotiation</h2>
+        <p class="font-serif">
+            The mechanism that is used for serving different representations of a resource at the same URI, so that the
+            user agent can specify which is best suited for the user.
+            <br>
+            Client sends: <code>Accept: application/json</code>, <code>Accept-Language: en-US</code>.<br>
+            Server responds with the appropriate <code>Content-Type</code> and language.
+        </p>
+
+        <!-- 12. HTTP Compression -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">12. HTTP Compression</h2>
+        <p class="font-serif">
+            Compresses the content usually using gzip to save bandwidth.
+        </p>
+        <h3 class="text-xl mt-4 mb-2 font-serif font-semibold">Request</h3>
+        <pre class="bg-gray-100 p-4 rounded-md text-sm overflow-x-auto border border-gray-300">
+Accept-Encoding: gzip, deflate, br
+</pre>
+        <h3 class="text-xl mt-4 mb-2 font-serif font-semibold">Response</h3>
+        <pre class="bg-gray-100 p-4 rounded-md text-sm overflow-x-auto border border-gray-300">
+Content-Encoding: gzip
+(Compressed binary data...)
+</pre>
+
+        <!-- 13. Persistent Connections -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">13. Persistent Connections</h2>
+        <p class="font-serif">
+            Allows using a single TCP connection to send and receive multiple HTTP requests/responses, as opposed to
+            opening a new connection for every single request pair.
+        </p>
+        <ul class="list-disc ml-8 font-serif mt-1">
+            <li><strong>HTTP/1.0:</strong> Default was non-persistent. required <code>Connection: keep-alive</code>.
+            </li>
+            <li><strong>HTTP/1.1:</strong> Persistent by default. Reduced handshake latency (3-way handshake) and CPU
+                usage.</li>
+        </ul>
+
+        <!-- 14. Multipart Requests -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">14. Multipart Requests</h2>
+        <p class="font-serif">
+            Used to send large files or mix data (e.g., file upload + JSON). The body is divided into parts by a
+            boundary.
+        </p>
+        <pre class="bg-gray-100 p-4 rounded-md text-sm overflow-x-auto border border-gray-300">
+Content-Type: multipart/form-data; boundary=boundary-string
+
+--boundary-string
+Content-Disposition: form-data; name="file"; filename="image.png"
+Content-Type: image/png
+
+[Binary Data]
+--boundary-string--
+</pre>
+
+        <!-- 15. SSL/HTTPS/TLS -->
+        <h2 class="text-2xl mt-8 mb-3 font-serif font-bold">15. SSL / HTTPS / TLS</h2>
+        <p class="font-serif">
+            <strong>HTTPS</strong> is HTTP over <strong>TLS</strong> (Transport Layer Security), formerly SSL.
+        </p>
+        <ul class="list-disc ml-8 font-serif mt-2">
+            <li>**Encryption:** Encrypts the data exchanged (prevents eavesdropping).</li>
+            <li>**Integrity:** Data cannot be modified/corrupted during transfer.</li>
+            <li>**Authentication:** Proves the server is who it claims to be (via Certificates).</li>
+        </ul>
+
+        <hr class="my-10" />
+        <footer class="my-8">By Your Name</footer>
+    </div>
+</body>
+
+</html>

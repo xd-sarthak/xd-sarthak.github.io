@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started with My Blog</title>
+    <meta name="description" content="An example blog post showing the structure and formatting" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            background:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E"),
+                linear-gradient(to bottom, #f4e4c1 0%, #e8d4a8 50%, #dcc69a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(139, 119, 87, 0.15) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        pre {
+            background-color: rgba(139, 119, 87, 0.15) !important;
+        }
+    </style>
+</head>
+
+<body class="w-full max-w-[90%] md:w-[50%] mx-auto pb-10">
+    <nav class="mt-6">
+        <div>
+            <h1 class="font-serif text-4xl">My Blog</h1>
+            <div class="mt-5 flex flex-wrap gap-5">
+                <a href="../index.html"
+                    class="relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:bottom-[-4px] after:left-0 hover:after:w-full after:transition-all after:duration-300">Home</a>
+                <a href="./blog.html"
+                    class="relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:bottom-[-4px] after:left-0 hover:after:w-full after:transition-all after:duration-300">Blogs</a>
+                <a href="../notes/notes.html"
+                    class="relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:bottom-[-4px] after:left-0 hover:after:w-full after:transition-all after:duration-300">Notes</a>
+            </div>
+        </div>
+    </nav>
+
+    <hr class="mt-3" />
+
+    <div class="mt-2">
+        <h1 class="text-4xl mt-[57px] mb-3 font-serif">
+            Getting Started with My Blog
+        </h1>
+        <span class="text-sm text-gray-500">14th January, 2026</span>
+
+        <p class="mt-4 font-serif text-lg">
+            This is an example blog post that demonstrates the structure and
+            formatting you can use for your own posts. Feel free to modify
+            this template to suit your needs.
+        </p>
+
+        <h2 class="text-2xl mt-8 mb-3 font-serif">Adding Images</h2>
+        <p class="mt-2 font-serif text-lg">
+            You can add images by placing them in the <code class="bg-orange-200 px-1 rounded">assets/</code>
+            folder and referencing them like this:
+        </p>
+
+        <!-- Example image usage: -->
+        <!-- <img src="./assets/your-image.png" alt="Description" class="mx-auto my-5 rounded-lg" /> -->
+
+        <h2 class="text-2xl mt-8 mb-3 font-serif">Adding Code</h2>
+        <p class="mt-2 font-serif text-lg">
+            You can add inline code using the <code class="bg-orange-200 px-1 rounded">code</code> tag,
+            or create code blocks using pre and code tags:
+        </p>
+
+        <pre class="bg-orange-200 p-4 rounded-lg mt-4 overflow-x-auto"><code>function hello() {
+  console.log("Hello, World!");
+}</code></pre>
+
+        <h2 class="text-2xl mt-8 mb-3 font-serif">Adding Math (MathJax)</h2>
+        <p class="mt-2 font-serif text-lg">
+            You can include mathematical equations using MathJax notation:
+        </p>
+
+        <p class="font-serif text-lg mt-4">
+            Inline math: \( E = mc^2 \)
+        </p>
+
+        <div class="font-serif text-lg mt-4">
+            Block math:
+            \[ \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2} \]
+        </div>
+
+        <h2 class="text-2xl mt-8 mb-3 font-serif">Lists</h2>
+        <ul class="list-disc ml-8 font-serif text-lg mt-2">
+            <li>First item</li>
+            <li>Second item</li>
+            <li>Third item</li>
+        </ul>
+
+        <ol class="list-decimal ml-8 font-serif text-lg mt-4">
+            <li>Numbered item one</li>
+            <li>Numbered item two</li>
+            <li>Numbered item three</li>
+        </ol>
+
+        <hr class="my-10" />
+        <footer class="my-8">By Your Name</footer>
+    </div>
+</body>
+
+</html>
